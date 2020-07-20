@@ -3,9 +3,9 @@
   "nbformat_minor": 0,
   "metadata": {
     "colab": {
-      "name": "Untitled3.ipynb",
+      "name": "Untitled8.ipynb",
       "provenance": [],
-      "authorship_tag": "ABX9TyOPsYAjYchs/qGpZkExDjD0",
+      "authorship_tag": "ABX9TyMwsUTywl9jqPRKvq0URXAW",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -25,169 +25,72 @@
       ]
     },
     {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "s7TuFTgkFJj_",
-        "colab_type": "text"
-      },
-      "source": [
-        "1. Start by creating a new Notebook for this assignment.\n"
-      ]
-    },
-    {
       "cell_type": "code",
       "metadata": {
-        "id": "nN61rcUPFQbY",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 34
-        },
-        "outputId": "bebf3b5f-0b1a-45d4-9da7-5e7ac61c6b23"
-      },
-      "source": [
-        "import numpy as np # library to handle data in a vectorized manner\n",
-        "import pandas as pd # library for data analsysis\n",
-        "import requests # Library for web scraping\n",
-        "\n",
-        "print('Libraries imported.')"
-      ],
-      "execution_count": 1,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "Libraries imported.\n"
-          ],
-          "name": "stdout"
-        }
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "dBmrJ0qPFhcu",
-        "colab_type": "text"
-      },
-      "source": [
-        "2.Use the Notebook to build the code to scrape the following Wikipedia page, https://en.wikipedia.org/wiki/List_of_postal_codes_of_Canada:_M, in order to obtain the data that is in the table of postal codes and to transform the data into a pandas dataframe like the one shown below:\n"
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "6KgmqYz1Fvw2",
-        "colab_type": "text"
-      },
-      "source": [
-        "Scraping table from HTML using BeautifulSoup, write a Python program similar to scrape.py,from:"
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "zD4EkujOGCa4",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 34
-        },
-        "outputId": "4d262fee-df47-4ccb-f46e-2868a1364463"
-      },
-      "source": [
-        "# To run this, you can install BeautifulSoup\n",
-        "# https://pypi.python.org/pypi/beautifulsoup4\n",
-        "\n",
-        "# Or download the file\n",
-        "# http://beautiful-soup-4\n",
-        "# and unzip it in the same directory as this file\n",
-        "import requests\n",
-        "from urllib.request import urlopen\n",
-        "from bs4 import BeautifulSoup\n",
-        "import ssl\n",
-        "import csv\n",
-        "\n",
-        "print('BeautifulSoup  & csv imported.')"
-      ],
-      "execution_count": 2,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "BeautifulSoup  & csv imported.\n"
-          ],
-          "name": "stdout"
-        }
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "XO88Yrk6GD0N",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 34
-        },
-        "outputId": "3fa3283a-1629-47cd-c760-3ab3d9381b39"
-      },
-      "source": [
-        "# Ignore SSL certificate errors\n",
-        "ctx = ssl.create_default_context()\n",
-        "ctx.check_hostname = False\n",
-        "ctx.verify_mode = ssl.CERT_NONE\n",
-        "\n",
-        "print('SSL certificate errors ignored.')"
-      ],
-      "execution_count": 3,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "SSL certificate errors ignored.\n"
-          ],
-          "name": "stdout"
-        }
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "QkSzzzEEGJyT",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 34
-        },
-        "outputId": "30a3127e-1138-4321-9ebf-14ff00ea8d0c"
-      },
-      "source": [
-        "source = requests.get('https://en.wikipedia.org/wiki/List_of_postal_codes_of_Canada:_M').text\n",
-        "\n",
-        "soup = BeautifulSoup(source, 'lxml')\n",
-        "\n",
-        "print('soup ready')"
-      ],
-      "execution_count": 4,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "soup ready\n"
-          ],
-          "name": "stdout"
-        }
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "czDXekYIGML3",
+        "id": "iTsrL4Xp6_NV",
         "colab_type": "code",
         "colab": {}
       },
       "source": [
-        "table = soup.find('table',{'class':'wikitable sortable'})"
+        "import pandas as pd\n",
+        "import requests\n",
+        "from bs4 import BeautifulSoup"
+      ],
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Ky1mFRsQ7Buk",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "\n",
+        "List_url = \"https://en.wikipedia.org/wiki/List_of_postal_codes_of_Canada:_M\"\n",
+        "source = requests.get(List_url).text"
+      ],
+      "execution_count": 2,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "domQucsG7EXK",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "soup = BeautifulSoup(source, 'xml')"
+      ],
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "MzPdQpc47Fxz",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "table=soup.find('table')"
+      ],
+      "execution_count": 4,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "dJIbpXj07HAa",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "\n",
+        "column_names=['Postalcode','Borough','Neighbourhood']\n",
+        "df = pd.DataFrame(columns=column_names)"
       ],
       "execution_count": 5,
       "outputs": []
@@ -195,12 +98,18 @@
     {
       "cell_type": "code",
       "metadata": {
-        "id": "SLQSeaMxGRLH",
+        "id": "ewRHjLFl7Ima",
         "colab_type": "code",
         "colab": {}
       },
       "source": [
-        "table_rows = table.find_all('tr')"
+        "\n",
+        "for tr_cell in table.find_all('tr'):\n",
+        "    row_data=[]\n",
+        "    for td_cell in tr_cell.find_all('td'):\n",
+        "        row_data.append(td_cell.text.strip())\n",
+        "    if len(row_data)==3:\n",
+        "        df.loc[len(df)] = row_data"
       ],
       "execution_count": 6,
       "outputs": []
@@ -208,165 +117,18 @@
     {
       "cell_type": "code",
       "metadata": {
-        "id": "TTlrE2mMGWWR",
+        "id": "DTvgtXq97KDL",
         "colab_type": "code",
-        "colab": {}
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "outputId": "8373ad2d-8d93-4d0e-8e2b-3ba62514cb42"
       },
       "source": [
-        "data = []\n",
-        "for row in table_rows:\n",
-        "    data.append([t.text.strip() for t in row.find_all('td')])\n",
-        "\n",
-        "df = pd.DataFrame(data, columns=['PostalCode', 'Borough', 'Neighbourhood'])\n",
-        "df = df[~df['PostalCode'].isnull()]  # to filter out bad rows\n",
-        "\n",
-        "#print(df.head(5))\n",
-        "#print('***')\n",
-        "#print(df.tail(5))"
+        "df.head()"
       ],
       "execution_count": 7,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "tQBuUgcMGfMP",
-        "colab_type": "text"
-      },
-      "source": [
-        "3. Dataframe"
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "KNPsn3WvGi5N",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 185
-        },
-        "outputId": "10f96b97-3eb3-4ab6-dbd2-bcef96987c16"
-      },
-      "source": [
-        "df.info()"
-      ],
-      "execution_count": 8,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "<class 'pandas.core.frame.DataFrame'>\n",
-            "Int64Index: 180 entries, 1 to 180\n",
-            "Data columns (total 3 columns):\n",
-            " #   Column         Non-Null Count  Dtype \n",
-            "---  ------         --------------  ----- \n",
-            " 0   PostalCode     180 non-null    object\n",
-            " 1   Borough        180 non-null    object\n",
-            " 2   Neighbourhood  180 non-null    object\n",
-            "dtypes: object(3)\n",
-            "memory usage: 5.6+ KB\n"
-          ],
-          "name": "stdout"
-        }
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "itRRgUoqGpEq",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 34
-        },
-        "outputId": "f3cf7b1c-d7bd-4e34-cdd9-a0b385a36437"
-      },
-      "source": [
-        "df.shape"
-      ],
-      "execution_count": 9,
-      "outputs": [
-        {
-          "output_type": "execute_result",
-          "data": {
-            "text/plain": [
-              "(180, 3)"
-            ]
-          },
-          "metadata": {
-            "tags": []
-          },
-          "execution_count": 9
-        }
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "X0JxAeZlIcVt",
-        "colab_type": "text"
-      },
-      "source": [
-        ""
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "xJH1eI1vIfLg",
-        "colab_type": "code",
-        "colab": {}
-      },
-      "source": [
-        "import pandas\n",
-        "import requests\n",
-        "from bs4 import BeautifulSoup\n",
-        "website_text = requests.get('https://en.wikipedia.org/wiki/List_of_postal_codes_of_Canada:_M').text\n",
-        "soup = BeautifulSoup(website_text,'lxml')\n",
-        "\n",
-        "table = soup.find('table',{'class':'wikitable sortable'})\n",
-        "table_rows = table.find_all('tr')\n",
-        "\n",
-        "data = []\n",
-        "for row in table_rows:\n",
-        "    data.append([t.text.strip() for t in row.find_all('td')])\n",
-        "\n",
-        "df = pandas.DataFrame(data, columns=['PostalCode', 'Borough', 'Neighbourhood'])\n",
-        "df = df[~df['PostalCode'].isnull()]\n"
-      ],
-      "execution_count": 13,
-      "outputs": []
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "WP14m_RiIlFG",
-        "colab_type": "code",
-        "colab": {}
-      },
-      "source": [
-        "df.drop(df[df['Borough']==\"Not assigned\"].index,axis=0, inplace=True)"
-      ],
-      "execution_count": 14,
-      "outputs": []
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "-yucLqiXIpvi",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 195
-        },
-        "outputId": "1b19584f-c6e5-473f-b953-cca6dd84712a"
-      },
-      "source": [
-        "df1 = df.reset_index()\n",
-        "df1.head()"
-      ],
-      "execution_count": 15,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -390,8 +152,7 @@
               "  <thead>\n",
               "    <tr style=\"text-align: right;\">\n",
               "      <th></th>\n",
-              "      <th>index</th>\n",
-              "      <th>PostalCode</th>\n",
+              "      <th>Postalcode</th>\n",
               "      <th>Borough</th>\n",
               "      <th>Neighbourhood</th>\n",
               "    </tr>\n",
@@ -399,35 +160,137 @@
               "  <tbody>\n",
               "    <tr>\n",
               "      <th>0</th>\n",
-              "      <td>3</td>\n",
+              "      <td>M1A</td>\n",
+              "      <td>Not assigned</td>\n",
+              "      <td>Not assigned</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>M2A</td>\n",
+              "      <td>Not assigned</td>\n",
+              "      <td>Not assigned</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
               "      <td>M3A</td>\n",
               "      <td>North York</td>\n",
               "      <td>Parkwoods</td>\n",
               "    </tr>\n",
               "    <tr>\n",
-              "      <th>1</th>\n",
-              "      <td>4</td>\n",
+              "      <th>3</th>\n",
               "      <td>M4A</td>\n",
               "      <td>North York</td>\n",
               "      <td>Victoria Village</td>\n",
               "    </tr>\n",
               "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>M5A</td>\n",
+              "      <td>Downtown Toronto</td>\n",
+              "      <td>Regent Park, Harbourfront</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "  Postalcode           Borough              Neighbourhood\n",
+              "0        M1A      Not assigned               Not assigned\n",
+              "1        M2A      Not assigned               Not assigned\n",
+              "2        M3A        North York                  Parkwoods\n",
+              "3        M4A        North York           Victoria Village\n",
+              "4        M5A  Downtown Toronto  Regent Park, Harbourfront"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 7
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ofAf4Vv07L5d",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df=df[df['Borough']!='Not assigned']"
+      ],
+      "execution_count": 8,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Fo6gV_Aa7N0S",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "outputId": "fa2e6f6f-e122-450b-f71c-c932eab5b34e"
+      },
+      "source": [
+        "df.head()"
+      ],
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Postalcode</th>\n",
+              "      <th>Borough</th>\n",
+              "      <th>Neighbourhood</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
               "      <th>2</th>\n",
-              "      <td>5</td>\n",
+              "      <td>M3A</td>\n",
+              "      <td>North York</td>\n",
+              "      <td>Parkwoods</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>M4A</td>\n",
+              "      <td>North York</td>\n",
+              "      <td>Victoria Village</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
               "      <td>M5A</td>\n",
               "      <td>Downtown Toronto</td>\n",
               "      <td>Regent Park, Harbourfront</td>\n",
               "    </tr>\n",
               "    <tr>\n",
-              "      <th>3</th>\n",
-              "      <td>6</td>\n",
+              "      <th>5</th>\n",
               "      <td>M6A</td>\n",
               "      <td>North York</td>\n",
               "      <td>Lawrence Manor, Lawrence Heights</td>\n",
               "    </tr>\n",
               "    <tr>\n",
-              "      <th>4</th>\n",
-              "      <td>7</td>\n",
+              "      <th>6</th>\n",
               "      <td>M7A</td>\n",
               "      <td>Downtown Toronto</td>\n",
               "      <td>Queen's Park, Ontario Provincial Government</td>\n",
@@ -437,79 +300,163 @@
               "</div>"
             ],
             "text/plain": [
-              "   index  ...                                Neighbourhood\n",
-              "0      3  ...                                    Parkwoods\n",
-              "1      4  ...                             Victoria Village\n",
-              "2      5  ...                    Regent Park, Harbourfront\n",
-              "3      6  ...             Lawrence Manor, Lawrence Heights\n",
-              "4      7  ...  Queen's Park, Ontario Provincial Government\n",
-              "\n",
-              "[5 rows x 4 columns]"
+              "  Postalcode           Borough                                Neighbourhood\n",
+              "2        M3A        North York                                    Parkwoods\n",
+              "3        M4A        North York                             Victoria Village\n",
+              "4        M5A  Downtown Toronto                    Regent Park, Harbourfront\n",
+              "5        M6A        North York             Lawrence Manor, Lawrence Heights\n",
+              "6        M7A  Downtown Toronto  Queen's Park, Ontario Provincial Government"
             ]
           },
           "metadata": {
             "tags": []
           },
-          "execution_count": 15
+          "execution_count": 12
         }
       ]
     },
     {
       "cell_type": "code",
       "metadata": {
-        "id": "nvZCEIjVIw4G",
+        "id": "x_hwMc6d7Ppf",
         "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 202
-        },
-        "outputId": "4c12ffe8-09c0-4354-9021-5fded9ab678b"
+        "colab": {}
       },
       "source": [
-        "df1.info()"
+        "temp_df=df.groupby('Postalcode')['Neighbourhood'].apply(lambda x: \"%s\" % ', '.join(x))\n",
+        "temp_df=temp_df.reset_index(drop=False)\n",
+        "temp_df.rename(columns={'Neighbourhood':'Neighbourhood_joined'},inplace=True)"
+      ],
+      "execution_count": 13,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5nglkepR7gQG",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "\n",
+        "df_merge = pd.merge(df, temp_df, on='Postalcode')"
+      ],
+      "execution_count": 14,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "eh-IQNTA7hzh",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "\n",
+        "df_merge.drop(['Neighbourhood'],axis=1,inplace=True)"
+      ],
+      "execution_count": 15,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "h5Ov4lgL7jNY",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df_merge.drop_duplicates(inplace=True)"
       ],
       "execution_count": 16,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "<class 'pandas.core.frame.DataFrame'>\n",
-            "RangeIndex: 103 entries, 0 to 102\n",
-            "Data columns (total 4 columns):\n",
-            " #   Column         Non-Null Count  Dtype \n",
-            "---  ------         --------------  ----- \n",
-            " 0   index          103 non-null    int64 \n",
-            " 1   PostalCode     103 non-null    object\n",
-            " 2   Borough        103 non-null    object\n",
-            " 3   Neighbourhood  103 non-null    object\n",
-            "dtypes: int64(1), object(3)\n",
-            "memory usage: 3.3+ KB\n"
-          ],
-          "name": "stdout"
-        }
-      ]
+      "outputs": []
     },
     {
       "cell_type": "code",
       "metadata": {
-        "id": "9YwyBmW4I5xl",
+        "id": "ehVoWUoC7kZ3",
         "colab_type": "code",
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 34
+          "height": 204
         },
-        "outputId": "8c3a57bf-6dbb-4eae-b39a-8b6ade37975f"
+        "outputId": "2b4d89b7-924c-41c1-9f93-f6e30ebef872"
       },
       "source": [
-        "df1.shape"
+        "df_merge.rename(columns={'Neighbourhood_joined':'Neighbourhood'},inplace=True)\n",
+        "df_merge.head()"
       ],
       "execution_count": 17,
       "outputs": [
         {
           "output_type": "execute_result",
           "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Postalcode</th>\n",
+              "      <th>Borough</th>\n",
+              "      <th>Neighbourhood</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>M3A</td>\n",
+              "      <td>North York</td>\n",
+              "      <td>Parkwoods</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>M4A</td>\n",
+              "      <td>North York</td>\n",
+              "      <td>Victoria Village</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>M5A</td>\n",
+              "      <td>Downtown Toronto</td>\n",
+              "      <td>Regent Park, Harbourfront</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>M6A</td>\n",
+              "      <td>North York</td>\n",
+              "      <td>Lawrence Manor, Lawrence Heights</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>M7A</td>\n",
+              "      <td>Downtown Toronto</td>\n",
+              "      <td>Queen's Park, Ontario Provincial Government</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
             "text/plain": [
-              "(103, 4)"
+              "  Postalcode           Borough                                Neighbourhood\n",
+              "0        M3A        North York                                    Parkwoods\n",
+              "1        M4A        North York                             Victoria Village\n",
+              "2        M5A  Downtown Toronto                    Regent Park, Harbourfront\n",
+              "3        M6A        North York             Lawrence Manor, Lawrence Heights\n",
+              "4        M7A  Downtown Toronto  Queen's Park, Ontario Provincial Government"
             ]
           },
           "metadata": {
@@ -522,160 +469,173 @@
     {
       "cell_type": "code",
       "metadata": {
-        "id": "Bc2AOWOBI7xF",
-        "colab_type": "code",
-        "colab": {}
-      },
-      "source": [
-        ""
-      ],
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "w-eEQTvLJAfq",
-        "colab_type": "text"
-      },
-      "source": [
-        "More than one neighborhood can exist in one postal code area, M5A is listed twice and has two neighborhoods Harbourfront and Regent Park. These two rows will be combined into one row with the neighborhoods separated with a comma using groupby, see:"
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "w262xfFVJEmi",
-        "colab_type": "text"
-      },
-      "source": [
-        ""
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "061BGHtWJKAf",
-        "colab_type": "code",
-        "colab": {}
-      },
-      "source": [
-        ""
-      ],
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "m5LFavjwJGCt",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 168
-        },
-        "outputId": "2a5f2beb-8bab-478e-a57e-484f529f1028"
-      },
-      "source": [
-        "df2= df1.groupby('PostalCode').agg(lambda x: ','.join(x))\n",
-        "\n",
-        "       \n",
-        "df2.info()"
-      ],
-      "execution_count": 19,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "<class 'pandas.core.frame.DataFrame'>\n",
-            "Index: 103 entries, M1B to M9W\n",
-            "Data columns (total 2 columns):\n",
-            " #   Column         Non-Null Count  Dtype \n",
-            "---  ------         --------------  ----- \n",
-            " 0   Borough        103 non-null    object\n",
-            " 1   Neighbourhood  103 non-null    object\n",
-            "dtypes: object(2)\n",
-            "memory usage: 2.4+ KB\n"
-          ],
-          "name": "stdout"
-        }
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "9RTC7yxYJLmW",
+        "id": "QdfoLaGy7l90",
         "colab_type": "code",
         "colab": {
           "base_uri": "https://localhost:8080/",
           "height": 34
         },
-        "outputId": "e930b739-5edb-4bf1-b06c-5d0ef7226232"
+        "outputId": "ed9d2acd-48f6-4319-c3c7-e291b01448d7"
       },
       "source": [
-        "df2.shape"
+        "\n",
+        "df_merge.shape"
       ],
-      "execution_count": 20,
+      "execution_count": 18,
       "outputs": [
         {
           "output_type": "execute_result",
           "data": {
             "text/plain": [
-              "(103, 2)"
+              "(103, 3)"
             ]
           },
           "metadata": {
             "tags": []
           },
-          "execution_count": 20
+          "execution_count": 18
         }
       ]
     },
     {
       "cell_type": "code",
       "metadata": {
-        "id": "misiMY9YJWUF",
+        "id": "RTYx4hRM7n8k",
         "colab_type": "code",
         "colab": {}
       },
       "source": [
-        ""
+        "def get_geocode(postal_code):\n",
+        "    # initialize your variable to None\n",
+        "    lat_lng_coords = None\n",
+        "    while(lat_lng_coords is None):\n",
+        "        g = geocoder.google('{}, Toronto, Ontario'.format(postal_code))\n",
+        "        lat_lng_coords = g.latlng\n",
+        "    latitude = lat_lng_coords[0]\n",
+        "    longitude = lat_lng_coords[1]\n",
+        "    return latitude,longitude"
       ],
-      "execution_count": null,
+      "execution_count": 19,
       "outputs": []
     },
     {
-      "cell_type": "markdown",
+      "cell_type": "code",
       "metadata": {
-        "id": "ZsZgNoD3JcY6",
-        "colab_type": "text"
+        "id": "S6t_NVyt7qZc",
+        "colab_type": "code",
+        "colab": {}
       },
       "source": [
-        "There are also cells that have an assigned neighbouhoods, lets assign their boroughs as their neighbourhood"
+        "geo_df=pd.read_csv('http://cocl.us/Geospatial_data')"
+      ],
+      "execution_count": 20,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "c59o1l4n7se9",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "outputId": "4a4d79ca-af88-49f6-80d3-e78d09e8dd22"
+      },
+      "source": [
+        "geo_df.head()"
+      ],
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Postal Code</th>\n",
+              "      <th>Latitude</th>\n",
+              "      <th>Longitude</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>M1B</td>\n",
+              "      <td>43.806686</td>\n",
+              "      <td>-79.194353</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>M1C</td>\n",
+              "      <td>43.784535</td>\n",
+              "      <td>-79.160497</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>M1E</td>\n",
+              "      <td>43.763573</td>\n",
+              "      <td>-79.188711</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>M1G</td>\n",
+              "      <td>43.770992</td>\n",
+              "      <td>-79.216917</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>M1H</td>\n",
+              "      <td>43.773136</td>\n",
+              "      <td>-79.239476</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "  Postal Code   Latitude  Longitude\n",
+              "0         M1B  43.806686 -79.194353\n",
+              "1         M1C  43.784535 -79.160497\n",
+              "2         M1E  43.763573 -79.188711\n",
+              "3         M1G  43.770992 -79.216917\n",
+              "4         M1H  43.773136 -79.239476"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 21
+        }
       ]
     },
     {
       "cell_type": "code",
       "metadata": {
-        "id": "ZypuBHqgJh2F",
+        "id": "PGC9jyA17xqB",
         "colab_type": "code",
         "colab": {}
       },
       "source": [
-        "df2.loc[df2['Neighbourhood']==\"Not assigned\",'Neighbourhood']=df2.loc[df2['Neighbourhood']==\"Not assigned\",'Borough']\n"
-      ],
-      "execution_count": 21,
-      "outputs": []
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "klSzUsAtJjWz",
-        "colab_type": "code",
-        "colab": {}
-      },
-      "source": [
-        "df3 = df2.reset_index()"
+        "\n",
+        "geo_df.rename(columns={'Postal Code':'Postalcode'},inplace=True)\n",
+        "geo_merged = pd.merge(geo_df, df_merge, on='Postalcode')"
       ],
       "execution_count": 22,
       "outputs": []
@@ -683,12 +643,12 @@
     {
       "cell_type": "code",
       "metadata": {
-        "id": "_VJS6UIRJlOK",
+        "id": "r-x7nbSb7zxs",
         "colab_type": "code",
         "colab": {}
       },
       "source": [
-        "df3['Borough']= df3['Borough'].str.replace('nan|[{}\\s]','').str.split(',').apply(set).str.join(',').str.strip(',').str.replace(\",{2,}\",\",\")"
+        "geo_data=geo_merged[['Postalcode','Borough','Neighbourhood','Latitude','Longitude']]"
       ],
       "execution_count": 23,
       "outputs": []
@@ -696,16 +656,16 @@
     {
       "cell_type": "code",
       "metadata": {
-        "id": "m8g4nSAoJniY",
+        "id": "cjvWJdUt71ct",
         "colab_type": "code",
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 195
+          "height": 204
         },
-        "outputId": "6d7b4564-4878-4c57-a10b-1c323a1b2ae2"
+        "outputId": "a0eb2728-b30b-4c8e-8d93-a8e611bc453a"
       },
       "source": [
-        "df3.head()"
+        "geo_data.head()"
       ],
       "execution_count": 24,
       "outputs": [
@@ -731,9 +691,11 @@
               "  <thead>\n",
               "    <tr style=\"text-align: right;\">\n",
               "      <th></th>\n",
-              "      <th>PostalCode</th>\n",
+              "      <th>Postalcode</th>\n",
               "      <th>Borough</th>\n",
               "      <th>Neighbourhood</th>\n",
+              "      <th>Latitude</th>\n",
+              "      <th>Longitude</th>\n",
               "    </tr>\n",
               "  </thead>\n",
               "  <tbody>\n",
@@ -742,42 +704,54 @@
               "      <td>M1B</td>\n",
               "      <td>Scarborough</td>\n",
               "      <td>Malvern, Rouge</td>\n",
+              "      <td>43.806686</td>\n",
+              "      <td>-79.194353</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>1</th>\n",
               "      <td>M1C</td>\n",
               "      <td>Scarborough</td>\n",
               "      <td>Rouge Hill, Port Union, Highland Creek</td>\n",
+              "      <td>43.784535</td>\n",
+              "      <td>-79.160497</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>2</th>\n",
               "      <td>M1E</td>\n",
               "      <td>Scarborough</td>\n",
               "      <td>Guildwood, Morningside, West Hill</td>\n",
+              "      <td>43.763573</td>\n",
+              "      <td>-79.188711</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>3</th>\n",
               "      <td>M1G</td>\n",
               "      <td>Scarborough</td>\n",
               "      <td>Woburn</td>\n",
+              "      <td>43.770992</td>\n",
+              "      <td>-79.216917</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>4</th>\n",
               "      <td>M1H</td>\n",
               "      <td>Scarborough</td>\n",
               "      <td>Cedarbrae</td>\n",
+              "      <td>43.773136</td>\n",
+              "      <td>-79.239476</td>\n",
               "    </tr>\n",
               "  </tbody>\n",
               "</table>\n",
               "</div>"
             ],
             "text/plain": [
-              "  PostalCode      Borough                           Neighbourhood\n",
-              "0        M1B  Scarborough                          Malvern, Rouge\n",
-              "1        M1C  Scarborough  Rouge Hill, Port Union, Highland Creek\n",
-              "2        M1E  Scarborough       Guildwood, Morningside, West Hill\n",
-              "3        M1G  Scarborough                                  Woburn\n",
-              "4        M1H  Scarborough                               Cedarbrae"
+              "  Postalcode      Borough  ...   Latitude  Longitude\n",
+              "0        M1B  Scarborough  ...  43.806686 -79.194353\n",
+              "1        M1C  Scarborough  ...  43.784535 -79.160497\n",
+              "2        M1E  Scarborough  ...  43.763573 -79.188711\n",
+              "3        M1G  Scarborough  ...  43.770992 -79.216917\n",
+              "4        M1H  Scarborough  ...  43.773136 -79.239476\n",
+              "\n",
+              "[5 rows x 5 columns]"
             ]
           },
           "metadata": {
@@ -790,71 +764,7 @@
     {
       "cell_type": "code",
       "metadata": {
-        "id": "LowKgy8gJpGd",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 185
-        },
-        "outputId": "cf6fdfa5-0937-435c-b282-33b6f7751587"
-      },
-      "source": [
-        "df3.info()"
-      ],
-      "execution_count": 26,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "<class 'pandas.core.frame.DataFrame'>\n",
-            "RangeIndex: 103 entries, 0 to 102\n",
-            "Data columns (total 3 columns):\n",
-            " #   Column         Non-Null Count  Dtype \n",
-            "---  ------         --------------  ----- \n",
-            " 0   PostalCode     103 non-null    object\n",
-            " 1   Borough        103 non-null    object\n",
-            " 2   Neighbourhood  103 non-null    object\n",
-            "dtypes: object(3)\n",
-            "memory usage: 2.5+ KB\n"
-          ],
-          "name": "stdout"
-        }
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "GB7PwXU-JtKE",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 34
-        },
-        "outputId": "6570440e-46c1-4d4b-c2d7-10fede6ff593"
-      },
-      "source": [
-        "df3.shape"
-      ],
-      "execution_count": 27,
-      "outputs": [
-        {
-          "output_type": "execute_result",
-          "data": {
-            "text/plain": [
-              "(103, 3)"
-            ]
-          },
-          "metadata": {
-            "tags": []
-          },
-          "execution_count": 27
-        }
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "5qw5AwR1M2vU",
+        "id": "2KXURITR73xT",
         "colab_type": "code",
         "colab": {}
       },
@@ -863,16 +773,6 @@
       ],
       "execution_count": null,
       "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "wvbPQlLiJg18",
-        "colab_type": "text"
-      },
-      "source": [
-        ""
-      ]
     }
   ]
 }
